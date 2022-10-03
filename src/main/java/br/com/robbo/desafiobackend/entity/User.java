@@ -22,13 +22,10 @@ public class User {
 
     @NotNull
     @Column(name = "name")
-    private String nome;
+    private String name;
 
     @NotNull
-    @Size(min = 11, max = 11, message = "CPF inválido")
+    @Size(min = 11, max = 14, message = "CPF inválido")
     @Column(name = "cpf", unique = true)
     private String cpf;
-
-    @OneToOne(mappedBy = "account")
-    private Account account;
 }
