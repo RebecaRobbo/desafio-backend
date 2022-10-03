@@ -2,12 +2,15 @@ package br.com.robbo.desafiobackend.entity;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,7 +25,10 @@ public class User {
     private String nome;
 
     @NotNull
+    @Size(min = 11, max = 11, message = "CPF inválido")
     @Column(name = "cpf", unique = true)
     private String cpf;
 
+    @OneToOne(mappedBy = "account")
+    private Account account;
 }
